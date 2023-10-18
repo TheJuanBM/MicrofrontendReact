@@ -1,0 +1,22 @@
+diff --git a/node_modules/@types/react/ts5.0/index.d.ts b/node_modules/@types/react/ts5.0/index.d.ts
+index f23338e..c8b0e05 100644
+--- a/node_modules/@types/react/ts5.0/index.d.ts
++++ b/node_modules/@types/react/ts5.0/index.d.ts
+@@ -207,7 +207,7 @@ declare namespace React {
+ 
+     interface HTMLFactory<T extends HTMLElement> extends DetailedHTMLFactory<AllHTMLAttributes<T>, T> {}
+ 
+-    interface DetailedHTMLFactory<P extends HTMLAttributes<T>, T extends HTMLElement> extends DOMFactory<P, T> {
++    interface DetailedHTMLFactory<P extends HTMLAttributes<T>, T extends HTMLElement> extends DOMFactory<P extends any ? any : any, T> {
+         (props?: ClassAttributes<T> & P | null, ...children: ReactNode[]): DetailedReactHTMLElement<P, T>;
+     }
+ 
+@@ -1943,7 +1943,7 @@ declare namespace React {
+         | "treeitem"
+         | (string & {});
+ 
+-    interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
++    interface HTMLAttributes<T> extends AriaAttributes, Omit<DOMAttributes<T>, 'children'> {
+         // React-specific Attributes
+         defaultChecked?: boolean | undefined;
+         defaultValue?: string | number | ReadonlyArray<string> | undefined;

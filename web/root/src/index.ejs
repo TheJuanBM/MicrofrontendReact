@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>N5 Now | Microfrontend With React</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js" as="script" />
+
+    <meta charset="UTF-8" />
+    <meta name="author" content="TheJuanBM" />
+    <meta name="theme-color" content="#FFFFFF" />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta content="systemjs-importmap" name="importmap-type" />
+    <meta name="description" content="Web microfrontend with ReactJs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="default-src 'self' https: localhost:*; script-src 'unsafe-inline' 'unsafe-eval' https: localhost:*; connect-src https: localhost:* ws://localhost:*; style-src 'unsafe-inline' https:; object-src 'none';" http-equiv="Content-Security-Policy" />
+
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js"
+        }
+      }
+    </script>
+
+    <% if (isLocal) { %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@microfrontend-with-react/root-config": "//localhost:9000/microfrontend-with-react-root-config.js",
+
+          "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+          "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
+
+          "@single-spa/header": "http://localhost:1000/microfrontend-with-react-header.js",
+          "@single-spa/section": "http://localhost:2000/microfrontend-with-react-section.js",
+          "@single-spa/footer": "http://localhost:3000/microfrontend-with-react-footer.js"
+        }
+      }
+    </script>
+    <% } else { %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@microfrontend-with-react/root-config": "/microfrontend-with-react-root-config.js",
+
+          "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+          "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js",
+
+          "@single-spa/header": "https://header-jet.vercel.app/microfrontend-with-react-header.js",
+          "@single-spa/section": "https://section-ccbg.vercel.app/microfrontend-with-react-section.js",
+          "@single-spa/footer": "https://footer-qki2.vercel.app/microfrontend-with-react-footer.js"
+        }
+      }
+    </script>
+    <% } %>
+
+    <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
+
+    <% if (isLocal) { %>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
+    <% } else { %>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
+    <% } %>
+  </head>
+
+  <body style="margin: 0; font-family: 'Poppins';">
+    <script>System.import('@microfrontend-with-react/root-config');</script>
+    <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+  </body>
+</html>

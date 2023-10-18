@@ -1,0 +1,27 @@
+{
+  "start_url": ".",
+  "short_name": "N5 Now",
+  "display": "standalone",
+  "name": "N5 Now | Microfrontend With React",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "prefer_related_applications": "false",
+  "icons": [
+    {
+      "src": "n5Now.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "n5Now.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "n5Now.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

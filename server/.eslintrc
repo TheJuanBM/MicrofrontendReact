@@ -1,0 +1,21 @@
+{
+  "env": {
+    "es2021": true,
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "prettier/prettier": "error",
+    "indent": ["error", 2],
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"],
+    "linebreak-style": ["error", "unix"]
+  },
+  "ignorePatterns": ["jest.config.js", "node_modules", "package-lock.json", "dist", "tsconfig.json"]
+}
